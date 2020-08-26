@@ -19,9 +19,12 @@
 /// @since Aug 25, 2020
 
 import 'package:flutter/widgets.dart';
+import 'package:nshop/screens/complete_profile/complete_profile_screen.dart';
 import 'package:nshop/screens/forgot_password/forgot_password_screen.dart';
 import 'package:nshop/screens/login_success/login_success_screen.dart';
+import 'package:nshop/screens/otp/otp_screen.dart';
 import 'package:nshop/screens/sign_in/sign_in_screen.dart';
+import 'package:nshop/screens/sign_up/sign_up_screen.dart';
 import 'package:nshop/screens/splash/splash_screen.dart';
 
 // We use name route
@@ -31,4 +34,7 @@ final Map<String, WidgetBuilder> routes = {
   SignInScreen.routeName: (context) => SignInScreen(),
   ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
   LoginSuccessScreen.routeName: (context) => LoginSuccessScreen(),
+  SignUpScreen.routeName: (context) => SignUpScreen(),
+  CompleteProfileScreen.routeName: (context) => CompleteProfileScreen(),
+  OtpScreen.routeName: (context) => OtpScreen(),
 };

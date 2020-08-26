@@ -16,29 +16,29 @@
 
 ///
 /// @author nghiatc
-/// @since Aug 25, 2020
+/// @since Aug 26, 2020
 
 import 'package:flutter/material.dart';
 import 'package:nshop/components/custom_suffix_icon.dart';
 import 'package:nshop/components/default_button.dart';
 import 'package:nshop/components/form_error.dart';
-import 'package:nshop/screens/forgot_password/forgot_password_screen.dart';
-import 'package:nshop/screens/login_success/login_success_screen.dart';
+import 'package:nshop/screens/otp/otp_screen.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
-class SignForm extends StatefulWidget {
+class CompleteProfileForm extends StatefulWidget {
   @override
-  _SignFormState createState() => _SignFormState();
+  _CompleteProfileFormState createState() => _CompleteProfileFormState();
 }
 
-class _SignFormState extends State<SignForm> {
+class _CompleteProfileFormState extends State<CompleteProfileForm> {
   final _formKey = GlobalKey<FormState>();
-  String email;
-  String password;
-  bool remember = false;
   final List<String> errors = [];
+  String firstName;
+  String lastName;
+  String phoneNumber;
+  String address;
 
   void addError({String error}) {
     if (!errors.contains(error))
@@ -60,46 +60,21 @@ class _SignFormState extends State<SignForm> {
       key: _formKey,
       child: Column(
         children: [
-          buildEmailFormField(),
+          buildFirstNameFormField(),
           SizedBox(height: getProportionateScreenHeight(30),),
-          buildPasswordFormField(),
+          buildLastNameFormField(),
           SizedBox(height: getProportionateScreenHeight(30),),
+          buildPhoneNumberFormField(),
+          SizedBox(height: getProportionateScreenHeight(30),),
+          buildAddressFormField(),
           FormError(errors: errors),
-          SizedBox(height: getProportionateScreenHeight(20),),
-          Row(
-            children: [
-              Checkbox(
-                value: remember,
-                activeColor: kPrimaryColor,
-                onChanged: (value) {
-                  setState(() {
-                    remember = value;
-                  });
-                },
-              ),
-              Text(
-                  "Remember me"
-              ),
-              Spacer(),
-              GestureDetector(
-                onTap: () => Navigator.pushNamed(context, ForgotPasswordScreen.routeName),
-                child: Text(
-                  "Forget password",
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: getProportionateScreenHeight(20),),
+          SizedBox(height: getProportionateScreenHeight(40),),
           DefaultButton(
             text: "Continue",
             press: () {
               if (_formKey.currentState.validate()) {
-                _formKey.currentState.save();
-                // if all are valid then go to success screen
-                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                // Go to OTP screen
+                Navigator.pushNamed(context, OtpScreen.routeName);
               }
             },
           ),
@@ -108,73 +83,108 @@ class _SignFormState extends State<SignForm> {
     );
   }
 
-  TextFormField buildPasswordFormField() {
+  TextFormField buildAddressFormField() {
     return TextFormField(
-      obscureText: true,
-      onSaved: (newValue) => password = newValue,
+      onSaved: (newValue) => address = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kPassNullError);
-        } else if (value.length >= 8) {
-          removeError(error: kShortPassError);
+          removeError(error: kAddressNullError);
         }
         return null;
       },
       validator: (value) {
         if (value.isEmpty) {
-          addError(error: kPassNullError);
-          return "";
-        } else if (value.length < 8) {
-          addError(error: kShortPassError);
+          addError(error: kAddressNullError);
           return "";
         }
         return null;
       },
       decoration: InputDecoration(
-        labelText: "Password",
-        hintText: "Enter your password",
+        labelText: "Address",
+        hintText: "Enter your address",
         // If you are using latest version od flutter then label text and hint text show like this
         // if you are using flutter less than 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSuffixIcon(
-          svgIcon: "assets/icons/Lock.svg",
+          svgIcon: "assets/icons/Location point.svg",
         ),
       ),
     );
   }
 
-  TextFormField buildEmailFormField() {
+  TextFormField buildPhoneNumberFormField() {
     return TextFormField(
-      keyboardType: TextInputType.emailAddress,
-      onSaved: (newValue) => email = newValue,
+      keyboardType: TextInputType.number,
+      onSaved: (newValue) => phoneNumber = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kEmailNullError);
-        } else if (emailValidatorRegExp.hasMatch(value)) {
-          removeError(error: kInvalidEmailError);
+          removeError(error: kPhoneNumberNullError);
         }
         return null;
       },
       validator: (value) {
         if (value.isEmpty) {
-          addError(error: kEmailNullError);
-          return "";
-        } else if (!emailValidatorRegExp.hasMatch(value)) {
-          addError(error: kInvalidEmailError);
+          addError(error: kPhoneNumberNullError);
           return "";
         }
         return null;
       },
       decoration: InputDecoration(
-        labelText: "Email",
-        hintText: "Enter your email",
+        labelText: "Phone Number",
+        hintText: "Enter your phone number",
         // If you are using latest version od flutter then label text and hint text show like this
         // if you are using flutter less than 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSuffixIcon(
-          svgIcon: "assets/icons/Mail.svg",
+          svgIcon: "assets/icons/Phone.svg",
+        ),
+      ),
+    );
+  }
+
+  TextFormField buildLastNameFormField() {
+    return TextFormField(
+      onSaved: (newValue) => lastName = newValue,
+      decoration: InputDecoration(
+        labelText: "Last Name",
+        hintText: "Enter your last name",
+        // If you are using latest version od flutter then label text and hint text show like this
+        // if you are using flutter less than 1.20.* then maybe this is not working properly
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: CustomSuffixIcon(
+          svgIcon: "assets/icons/User.svg",
+        ),
+      ),
+    );
+  }
+
+  TextFormField buildFirstNameFormField() {
+    return TextFormField(
+      onSaved: (newValue) => firstName = newValue,
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kNamelNullError);
+        }
+        return null;
+      },
+      validator: (value) {
+        if (value.isEmpty) {
+          addError(error: kNamelNullError);
+          return "";
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        labelText: "First Name",
+        hintText: "Enter your first name",
+        // If you are using latest version od flutter then label text and hint text show like this
+        // if you are using flutter less than 1.20.* then maybe this is not working properly
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: CustomSuffixIcon(
+          svgIcon: "assets/icons/User.svg",
         ),
       ),
     );
   }
 }
+
