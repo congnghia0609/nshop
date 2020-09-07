@@ -19,20 +19,13 @@
 /// @since Sep 07, 2020
 
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nshop/components/product_card.dart';
-import 'package:nshop/constants.dart';
-import 'package:nshop/models/Product.dart';
 import 'package:nshop/size_config.dart';
 
 import 'categories.dart';
 import 'discount_banner.dart';
 import 'home_header.dart';
-import 'popular_products.dart';
-import 'search_field.dart';
-import 'section_title.dart';
 import 'special_offers.dart';
+import 'popular_products.dart';
 
 class Body extends StatelessWidget {
   @override
