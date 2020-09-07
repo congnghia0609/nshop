@@ -21,13 +21,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nshop/components/product_card.dart';
 import 'package:nshop/constants.dart';
+import 'package:nshop/models/Product.dart';
 import 'package:nshop/size_config.dart';
 
 import 'categories.dart';
 import 'discount_banner.dart';
 import 'home_header.dart';
-import 'icon_btn_with_counter.dart';
+import 'popular_products.dart';
 import 'search_field.dart';
 import 'section_title.dart';
 import 'special_offers.dart';
@@ -55,10 +57,18 @@ class Body extends StatelessWidget {
               height: getProportionateScreenWidth(30),
             ),
             SpecialOffers(),
+            SizedBox(
+              height: getProportionateScreenWidth(30),
+            ),
+            PopularProducts(),
+            SizedBox(
+              height: getProportionateScreenWidth(30),
+            ),
           ],
         ),
       ),
     );
   }
 }
+
 
