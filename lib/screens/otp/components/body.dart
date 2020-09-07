@@ -19,7 +19,6 @@
 /// @since Aug 26, 2020
 
 import 'package:flutter/material.dart';
-import 'package:nshop/components/default_button.dart';
 import 'package:nshop/constants.dart';
 import 'package:nshop/size_config.dart';
 

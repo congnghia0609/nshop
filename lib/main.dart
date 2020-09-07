@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nshop/constants.dart';
 import 'package:nshop/routes.dart';
 import 'package:nshop/screens/splash/splash_screen.dart';
 import 'package:nshop/theme.dart';

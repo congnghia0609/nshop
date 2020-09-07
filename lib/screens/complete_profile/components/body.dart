@@ -19,9 +19,6 @@
 /// @since Aug 26, 2020
 
 import 'package:flutter/material.dart';
-import 'package:nshop/components/custom_suffix_icon.dart';
-import 'package:nshop/components/default_button.dart';
-import 'package:nshop/components/form_error.dart';
 import 'package:nshop/constants.dart';
 import 'package:nshop/size_config.dart';
 

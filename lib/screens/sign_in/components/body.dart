@@ -19,14 +19,8 @@
 /// @since Aug 25, 2020
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nshop/components/custom_suffix_icon.dart';
-import 'package:nshop/components/default_button.dart';
-import 'package:nshop/components/form_error.dart';
 import 'package:nshop/components/no_account_text.dart';
 import 'package:nshop/components/social_card.dart';
-import 'package:nshop/constants.dart';
-import 'package:nshop/screens/forgot_password/forgot_password_screen.dart';
 import 'package:nshop/size_config.dart';
 
 import 'sign_form.dart';
