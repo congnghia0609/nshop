@@ -21,6 +21,7 @@
 import 'package:flutter/material.dart';
 import 'package:nshop/components/product_card.dart';
 import 'package:nshop/models/Product.dart';
+import 'package:nshop/screens/details/details_screen.dart';
 
 import '../../../size_config.dart';
 import 'section_title.dart';
@@ -45,11 +46,16 @@ class PopularProducts extends StatelessWidget {
             children: [
               ...List.generate(
                 demoProducts.length,
-                    (index) => ProductCard(
+                (index) => ProductCard(
                   product: demoProducts[index],
+                  press: () {
+                    Navigator.pushNamed(context, DetailsScreen.routeName);
+                  },
                 ),
               ),
-              SizedBox(width: getProportionateScreenWidth(20),),
+              SizedBox(
+                width: getProportionateScreenWidth(20),
+              ),
             ],
           ),
         ),
@@ -57,4 +63,3 @@ class PopularProducts extends StatelessWidget {
     );
   }
 }
-
