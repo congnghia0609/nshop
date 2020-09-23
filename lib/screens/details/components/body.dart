@@ -20,10 +20,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nshop/components/default_button.dart';
-import 'package:nshop/components/rounded_icon_btn.dart';
-import 'package:nshop/constants.dart';
 import 'package:nshop/models/Product.dart';
 import 'package:nshop/screens/details/components/product_description.dart';
 import 'package:nshop/screens/details/components/product_images.dart';

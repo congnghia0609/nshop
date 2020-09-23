@@ -19,10 +19,7 @@
 /// @since Sep 23, 2020
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nshop/components/rounded_icon_btn.dart';
 import 'package:nshop/models/Product.dart';
-import 'package:nshop/size_config.dart';
 
 import 'components/body.dart';
 import 'components/custom_app_bar.dart';
