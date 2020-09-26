@@ -16,38 +16,36 @@
 
 ///
 /// @author nghiatc
-/// @since Sep 07, 2020
+/// @since Sep 26, 2020
 
 import 'package:flutter/material.dart';
-import 'package:nshop/screens/cart/cart_screen.dart';
+import 'package:nshop/models/Cart.dart';
 
-import '../../../size_config.dart';
-import 'icon_btn_with_counter.dart';
-import 'search_field.dart';
+import 'components/body.dart';
 
-class HomeHeader extends StatelessWidget {
-  const HomeHeader({
-    Key key,
-  }) : super(key: key);
-
+class CartScreen extends StatelessWidget {
+  static String routeName = "/cart";
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: getProportionateScreenWidth(20),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Scaffold(
+      appBar: buildAppBar(context),
+      body: Body(),
+    );
+  }
+
+  AppBar buildAppBar(BuildContext context) {
+    return AppBar(
+      title: Column(
         children: [
-          SearchField(),
-          IconBtnWithCounter(
-            svgSrc: "assets/icons/Cart Icon.svg",
-            press: () => Navigator.pushNamed(context, CartScreen.routeName),
+          Text(
+            "Your Cart",
+            style: TextStyle(
+              color: Colors.black,
+            ),
           ),
-          IconBtnWithCounter(
-            svgSrc: "assets/icons/Bell.svg",
-            numOfItem: 3,
-            press: () {},
+          Text(
+            "${demoCarts.length} items",
+            style: Theme.of(context).textTheme.caption,
           ),
         ],
       ),
